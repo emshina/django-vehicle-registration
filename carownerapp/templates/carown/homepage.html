@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(46, 85, 72);
+        }
+        img{
+            height: 70px;
+            width: 200px;
+            border-radius: 25px;
+        }
+        .nav{
+            margin: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        ul{
+            display: flex; 
+            list-style: none;
+     
+        }
+        a{
+            color: white;
+            padding: 40px;
+            text-decoration: none;
+            
+        }
+        form{
+            padding: 45px;
+            margin: auto;
+            background-color: rgba(39, 35, 41, 0.5);
+            height: 400px;
+            width:  350px;
+            border-radius: 25px;
+
+        }
+        input{
+            height: 40px;
+            border: none;
+            padding-left: 20px;
+            color: aqua;
+            width: 70%;
+            display: flex;
+            margin: 30px;
+            border-radius: 25px;
+            background-color: rgba(82, 107, 104, 0.5);
+        }
+        .submit{
+            margin-top: 150px;
+            width: 180px;
+        }
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="nav">
+            {% load static %}
+            
+           <img src="{% static 'images\\pk.png' %}" alt="">
+              
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="">ABOUT</a></li>
+                <li><a href="">CONTACT</a></li>
+           
+            </ul>
+        </div>
+        <div class="content">
+            <div class="description">
+                <h1>Car registration system</h1>
+             </div>
+            
+            <form action="../insertuser/", method="post", name="register">
+                {% csrf_token %}
+        
+                <input type="text" name="Number_plate" value="Enter your number plate">
+                <input type="text" name="Phone_number" value="Enter your phone number">
+                <input type="text" name="ID" value="Enter your id">
+                <div class="submit">
+                    <input type="submit" value="click to register",name="req">
+                </div>
+                
+            </form>
+ 
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
