@@ -1,13 +1,17 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
     <style>
         body{
             background-color: rgb(46, 85, 72);
+            
         }
         img{
             height: 70px;
@@ -35,12 +39,14 @@
             padding: 45px;
             margin: auto;
             background-color: rgba(39, 35, 41, 0.5);
-            height: 400px;
-            width:  350px;
+            height: 350px;
+            width:  400px;
             border-radius: 25px;
 
         }
         input{
+
+            margin: auto;
             height: 40px;
             border: none;
             padding-left: 20px;
@@ -52,7 +58,8 @@
             background-color: rgba(82, 107, 104, 0.5);
         }
         .submit{
-            margin-top: 150px;
+        
+            margin: auto;
             width: 180px;
         }
         .content{
@@ -84,11 +91,20 @@
             <form action="../insertuser/", method="post", name="register">
                 {% csrf_token %}
         
-                <input type="text" name="Number_plate" value="Enter your number plate">
-                <input type="text" name="Phone_number" value="Enter your phone number">
-                <input type="text" name="ID" value="Enter your id">
+                <input type="text" name="Number_plate" placeholder="Enter your number plate">
+                <input type="text" name="Phone_number" placeholder="Enter your phone number">
+                <input type="text" name="ID" placeholder="Enter your id">
                 <div class="submit">
                     <input type="submit" value="click to register",name="req">
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+                    {% endfor %}
+
+                </ul>
+                {% endif %}
                 </div>
                 
             </form>

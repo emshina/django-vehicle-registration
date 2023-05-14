@@ -8,6 +8,18 @@
       {
         "label": "off"
       }
+    ],
+    "axe/keyboard": [
+      "default",
+      {
+        "nested-interactive": "off"
+      }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
+      }
     ]
   }
 }
