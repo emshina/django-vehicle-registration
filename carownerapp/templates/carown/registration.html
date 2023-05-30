@@ -88,11 +88,11 @@
                 <h1>Car registration system</h1>
              </div>
             
-            <form action="../insertuser/", method="post", name="register">
+            <form action="../registration/", method="post", name="register">
                 {% csrf_token %}
         
                 <input type="text" name="Number_plate" placeholder="Enter your number plate">
-                <input type="text" name="Phone_number" placeholder="Enter your phone number">
+                <input type="text" name="email" placeholder="Enter your email">
                 <input type="text" name="ID" placeholder="Enter your id">
                 <div class="submit">
                     <input type="submit" value="click to register",name="req">

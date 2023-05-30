@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    {{st.Number_plate}},<br>{{st.Phone_number}},<br>{{st.ID}}
-    <br> 
+
+     {% for x in st %}
+         {{ x.Number_Plate }}<br> 
     <a href="./">Back</a>
 </body>
 </html>

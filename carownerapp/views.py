@@ -1,43 +1,95 @@
 from django.shortcuts import render,redirect
-from .models import car_owner
+from django.http import HttpResponse
+from .models import Registration
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib import auth
+from django.db import connection
+from django.utils.text import slugify
+
+# def my_custom_sql(request):
+#     with connection.cursor() as cursor:
+#         cursor.execute("SELECT * FROM car_owner")
+#         rows = cursor.fetchall()
+        
+#     return render(request,'carown/police.html',{'rows':rows})
 
 
+# def charges(request):
+#     Number_Plate = request.GET.get('id','Not available')
+#     if(Number_Plate != 'Not available'):
+#         with connection.cursor() as cursor:
+#             cursor.execute("SELECT * FROM car_owner WHERE Number_Plate = %s",[Number_Plate])
+#             rows = cursor.fetchall()
 
-# Create your views here.
+#         return render(request,'carown/display.html',{'st': st})
+#     else:
+#         st = Registration.objects.all()
+#         return render(request,'carown/list.html',{'st': st})
+  
+        
+# # # Create your views here.
 def carowner(request):
     return render(request,'carown/home.html',{})
 
-def insertuser(request):
+def registration(request):
    
     if request.method == 'POST':
     
-        if request.POST['Number_plate']== '' or request.POST['Phone_number'] or request.POST['ID']:
-            messages.error(request,'registration error')
+        if request.POST['Number_plate']== '' or request.POST['email']=='':
+            messages.error(request,'Include all fields')
         else:
-            vnumberplate =request.POST['Number_plate']
-            vphonenumber=request.POST['Phone_number'] 
+            numberplate =request.POST['Number_plate']
+            vnumberplate = numberplate.replace(' ', '').lower()
+            vemail=request.POST['email'] 
             vid=request.POST['ID']
-            us= car_owner(Number_plate=vnumberplate, Phone_number=vphonenumber, ID =vid)
+            us= Registration(Number_Plate=vnumberplate, email=vemail, ID_id=vid)
             us.save()
             messages.success(request,'registration successful.')
 
-    return render(request,'carown/homepage.html',{})
+    return render(request,'carown/registration.html',{})
 
 def display(request):
-    st = car_owner.objects.all()
+    # records = registration.objects
+    
+    st = Registration.objects.all()
     return render(request,'carown/display.html',{'st':st})
 
-def display2(request):
-    id = request.GET.get('id','Not available')
-    if(id != 'Not available'):
-        st= car_owner.objects.get(ID= id)
-        return render(request,'carown/display.html',{'st': st})
-    else:
-        st = car_owner.objects.all()
-        return render(request,'carown/list.html',{'st': st})
+# def display2(request):
+#     # Number_Plate = request.GET.get('Number_Plate','Not available')
+#     # # n= Number_Plate.replace(' ', '')
+#     # if(Number_Plate != 'Not available'):
+#     #     with connection.cursor() as cursor:
+#     #         cursor.execute("SELECT REPLACE(Number_Plate, ' ', '') AS correct_Number_Plate, ID, Phone_Number FROM car_owner correct_WHERE Number_Plate = %s",[Number_Plate])
+#     #         rows = cursor.fetchall()
+#     #     return HttpResponse(rows)
+
+#     #     # return render(request,'carown/display.html',{'rows': rows})
+#     # else:
+#     #     with connection.cursor() as cursor:
+#     #         cursor.execute("SELECT Number_Plate FROM car_owner")
+#     #         rows = cursor.fetchall()
+#     #     # return HttpResponse(rows)
+            
+            
+            
+#         # return render(request,'carown/list.html',{'rows':rows})
+#     Number_Plate = request.GET.get('Number_Plate','Not available')
+#     n= Number_Plate.replace(' ', '')
+#     if(Number_Plate != 'Not available'):
+#         with connection.cursor() as cursor:
+#             cursor.execute("SELECT * FROM car_owner WHERE ID = %s",[Number_Plate])
+#             rows = cursor.fetchall()
+#         return HttpResponse(rows)
+
+#         return render(request,'carown/display.html',{'rows': rows})
+#     else:
+#         with connection.cursor() as cursor:
+#             cursor.execute("SELECT ID FROM car_owner")
+#             rows = cursor.fetchall()
+            
+#         return render(request,'carown/list.html',{'rows':rows})
+
     
 def signup(request):
     if request.method == "POST":

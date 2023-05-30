@@ -85,7 +85,7 @@ WSGI_APPLICATION = "carowner.wsgi.application"
 DATABASES ={
     'default':{
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'mary',
+        'NAME':'policeStationA',
         'USER':'root',
         'PASSWORD':'?00chin@',
         'HOST':'localhost',
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "AFRICA/NAIROBI"
 
 USE_I18N = True
 

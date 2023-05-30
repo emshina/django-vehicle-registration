@@ -8,9 +8,17 @@
 </head>
 <body>
   
-    {{user}}
-    {% for records in st %}
-    <a href=?id={{records.ID}}>{{records.Number_plate}}</a><br>
-    {% endfor %}
+    {{user}} <br>
+   
+    {% for records in rows %} 
+       
+      {% for y in records %}
+      
+       
+       <a href=?Number_Plate={{y}}>{{y}}</a><br>
+
+       {% endfor %}
+
+     {% endfor %} 
 </body>
 </html>
