@@ -87,7 +87,7 @@ DATABASES ={
         'ENGINE':'django.db.backends.mysql',
         'NAME':'policeStationA',
         'USER':'root',
-        'PASSWORD':'?00chin@',
+        'PASSWORD':'wagnerian',
         'HOST':'localhost',
         'PORT':'3306',
     }
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "AFRICA/NAIROBI"
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 

@@ -1,120 +1,225 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-    {% load static %}
-</head>
-<style>
-    body{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
-        background-color: rgb(12, 110, 61);
-
-    }
-    li{
-        list-style: none;
-        position: relative;
-     
-    }
-    a{
-        text-decoration: none;
-        color: white;
-        font-size: 1.5rem;
-        
-        transition: 2s;
-    }
-    a:hover{
-        
-        color: rgb(20, 204, 38);
-        
-    }
-    a::after:hover{
-        content: '';
-        position: absolute;
-        height: 6px;
-        width: 100%;
-        left: 0;
-        bottom: -5px;
-    }
-    #header{
-        margin-top: 20px;
-        width: 100%;
-        height: 100vh;
-        background-image: url("{% static 'images\\back.jpg' %}");
-        background-position: center;
-        background-size: cover;
-    }
-    .logo img{
-        border-radius: 25px;
-        width: 200px;
-    }
-    .navigation{
-       
-        padding: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .navigation .nav ul{
-        display: flex;
-        
-    }
-    .navigation .nav ul a{
-        margin-left: 45px;
-    }
-    p{
-
-        color: white;
-    }
-    h1{
-        margin:auto;
-        color:  white;
-        font-weight:500px;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=4.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/Css/style.css">
   
-    span{
-        color: rgb(22, 170, 29);
-    }
-    button{
-        background-color: rgb(39, 77, 47);
-        border-radius: 25px;
-        padding: 10px;
-    }
-
-</style>
+    
+    <title>Sure Wheels | Home page</title>
+</head>
 <body>
-    <div id="header">
-        <div class="container">
-            <div class="navigation">
-                <div class="logo"><img src="{% static 'images\\pk.png' %}" alt=""></div>
-                <div class="nav">
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Contact</a></li>
-                    </ul>
+    <div class="flex-container">
+        <div class="item"><i class="fa-brands fa-facebook-f"></i></div>
+        <div class="item"><i class="fa-brands fa-instagram"></i></div>
+        <div class="item"><i class="fa-brands fa-twitter"></i></div>
+    </div>  
+                                                                 
+    <div class="pill-nav">
+        <a href="./registration" class="btn">Register</a> 
+         
+        <button id="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
-                </div>
-             
-                
-
-            </div>
-            <div class="content">
-                <div class="inside">
-                    <h1><span>Kenya  Govern</span>ment Vehicles Services</h1>
-                    <p>This is a kenyan government service website .</p>
-                    <button><a href="./registration">register</a></button>
-                    <button><a href="./login">login</a></button>
-                    <a href="./signup">create an account</a>
-                </div>
-            </div>
-        </div>
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div>
+  <div class="container">
+        <div class="title">
+            {% block content %}
+            {% if error %}
+            {{ error }}
+            <br/>
+            <br/>
+            {% endif %}
+            <h1>Login!</h1>
+
+        </div>
+        <div class="login">
+            
+            <form method = "POST">
+
+                {% csrf_token %}
+
+                <span>USERNAME:</span><input type="text" name="username" placeholder="Enter username"/>
+                
+                <span>PASSWORD:</span><input type="password" name="password" />
+
+                <input class ="btn btn-primary" type="submit" value= "LOGIN" />
+                <a href="../signup">create an account</a>
+                
+            </form>
+           
+           {% endblock %}
+        </div>
+
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+        <a href="#contact">CONTACT</a>
+        <div class="dropdown">
+            <button class="dropbtn">ABOUT
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">WHO WE ARE</a>
+              <a href="catering staff.html">CATERING STAFF</a>
+            </div>
+          </div> 
+       
+        
+        <a class="active" href="#home">HOME</a>
+        <img width="200" height="200" src="static/images/Logo1.png">
+        <div class="title">Sure Wheels Vehicle Services</div><br><br><br>
+      </div>
+      <main>
+    <br><br><br><br><div class="container">
+      <img src="static/images/Car.jpg"style="width:100%; height:100%; margin-top:-4%; border-radius:1%;">
+    </div>
+    <div class="wrapper">
+      <div class="card">
+       <img src="static/images/Car1.jpg" height="60%" width="100%">
+       <div class="info">
+        <h1>exquisite Cars</h1>
+        <p>hellohelloejefefjekfejfnejfnejfnejnflefef</p>
+        <a href="Menu.html" class="btn">read more</a>
+        </div>
+      </div>
+      <div class="card">
+       <img src="" >
+       <div class="info">
+        <h1>Shop with us</h1>
+        <p>hellohelloejefefjekfejfnejfnejfnejnflefef</p>
+       <a href="" class="btn">read more</a>
+       </div>
+      </div>
+      <div class="card">
+       <img src="">
+       <div class="info">
+        <h1>reviews</h1>
+        <p>hellohelloejefefjekfejfnejfnejfnejnflefef</p>
+        <a href="#" class="btn">read more</a>
+       </div>
+      </div>
+      <div class="card">
+       <img src="style/Get to know us better.png" >
+      <div class="info">
+        <h1>contacts</h1>
+        <p>hellohelloejefefjekfejfnejfnejfnejnflefef</p>
+        <a href="#" class="btn">read more</a>
+       </div>
+      </div>
+    </div>
+  </main>
+  <br><br><br>
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Sure Wheels Vehicle services</h3>
+            </div>
+            <div class="w-body-a">
+              <!-- <p class="w-text-a color-text-a">
+                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+                sed aute irure.
+              </p> -->
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span>dennohkamash@gmail.com</li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +1234567890</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">kanya</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Tanzanya</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">zambia</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">South Africa</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Nigeria</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">Rwanda</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
+

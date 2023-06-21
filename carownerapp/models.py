@@ -20,7 +20,7 @@ class Identification(models.Model):
 
 class Phone_Number(models.Model):
     ID= models.ForeignKey(Identification,on_delete=models.PROTECT)
-    Phone_Numbers=models.IntegerField(max_length=13)
+    Phone_Numbers=models.IntegerField()
 
 
 class Registration(models.Model):
@@ -43,7 +43,7 @@ class Police_station(models.Model):
     county = models.ForeignKey(County,on_delete=models.PROTECT)
     sub_county= models.CharField(max_length=30, null=True)
     ward =models.CharField(max_length=30, null=True)
-    Phone_Number = models.IntegerField(max_length=13, null=True)
+    Phone_Number = models.IntegerField(null=True)
     
     
 class Charges(models.Model):
