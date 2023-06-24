@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -85,9 +86,9 @@ WSGI_APPLICATION = "carowner.wsgi.application"
 DATABASES ={
     'default':{
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'policeStationA',
+        'NAME':'policea',
         'USER':'root',
-        'PASSWORD':'wagnerian',
+        'PASSWORD':'?00chin@',
         'HOST':'localhost',
         'PORT':'3306',
     }

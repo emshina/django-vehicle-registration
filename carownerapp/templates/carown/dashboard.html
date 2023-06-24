@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="sell.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static  'index.css' %}" />
+    <link rel="stylesheet" href="{% static  'fontawesome/css/all.min.css' %}" />
+    
+
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <div class="profile1">
+                        {% load static %}
+                      <!-- <link rel="stylesheet" href="{% static  'index.css' %}" /> -->
+                      
+                        <div class="profile-pic"><img src="{{ profile_picture.url }}" alt />></div>
+                        <!-- <div class="info">Welcome again <br> paul</div> -->
+                        <span class="welcome">Welcome again <br> {{user}}<br><i class="fa fa-circle"></i><span class="online">online</span></span>
+                        
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#"  onclick="switchSection('')">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href ='#' onclick="switchSection('profile')">
+                        <i class="fas fa-user"></i><span class="nav-item">Profile</span>
+                    </a>
+      
+                </li>
+
+                <li>
+                    <a href>
+                        <i class="fas fa-car"></i>
+                        <span class="nav-item">My vehicles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"  onclick="switchSection('Sold-vehicles')">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="nav-item">Buy vehicle</span>
+                    </a>
+                </li>
+                <li>
+                    <a href ='#' onclick="switchSection('sell_vehicle')">
+                        <i class="fas fa-bullhorn"></i>
+                        <span class="nav-item">Sell vehicle</span>
+                    </a>
+                </li>
+                <li>
+                    <a href>
+                        <i class="fas fa-bell"></i>
+                        <span class="nav-item">Notifications</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href>
+                        <i class="fas fa-cog"></i>
+                        <span class="nav-item">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href>
+                        <i class="fas fa-question-circle"></i>
+                        <span class="nav-item">Help</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="profile tab">
+
+            <h1>Edit Profile</h1>
+
+            <form>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+  
+              <label for="email">Email:</label>
+              <input type="text" id="email" name="email" placeholder="Your email" required>
+  
+              <label for="bio">Bio:</label>
+              <textarea id="bio" name="bio" placeholder="Tell us about yourself"></textarea>
+  
+              {{ Profile_PictureForm }}
+  
+              <!-- <input type="submit" value="Save"> -->
+              <button type="submit"> Save </button>
+            </form>
+        </div>
+        <div class="sell tab">
+            <h1>Sell vehicle</h1>
+
+            <form>
+              <div class="details">
+                    <div class="detail">
+                            <div class="car-details">
+                                <label for="make">Make:</label>
+                                <input type="text" id="make" name="make">
+                            </div>
+                    
+                            <div class="car-details">
+                                <label for="model">Model:</label>
+                                <input type="text" id="model" name="model">
+                            </div>
+                    
+                            <div class="car-details">
+                                <label for="year">Year:</label>
+                                <input type="text" id="year" name="year">
+                            </div>
+                    
+                            <div class="car-details">
+                                <label for="price">Price:</label>
+                                <input type="text" id="price" name="price">
+                            </div>
+                    </div>
+                    <div class="detail">
+            
+                        <div class="car-description">
+                            <label for="description">Description:</label>
+                            
+                        </div>
+                        <div>
+                            <textarea id="description" name="description"></textarea>
+                        </div>
+                
+                        <div class="car-details">
+                            <label for="profile-picture">Picture:</label>
+                            <input  class="pic" type="file" id="profile-picture" name="profile-picture">
+                        </div>
+                
+                        <div class="car-details">
+                            <label for="contact">Contact:</label>
+                            <input type="text" id="contact" name="contact">
+                        </div>
+                
+                        <div class="car-details">
+                            <label for="phone">Phone:</label>
+                            <input type="text" id="phone" name="phone">
+
+                        </div>
+                    </div>
+                </div>
+                        <!-- <input type="submit" value="Submit"> -->
+                        <button type="submit"> Sell</button>
+   
+            </form>
+        
+            <!-- Display the submitted data (for demonstration purposes) -->
+            <div id="submitted-data"></div>
+       </div>
+       <div class="pk">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ Profile_PictureForm }}
+                {{ profilepic.profile_picture}}
+                <button type="submit">Update Profile Picture</button>
+            </form>
+        </div>
+
+       
+        <div class="Sold-vehicles tab">
+            <h1>Vehicle For Sales</h1>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <select id="filterSelect">
+                <option value="price">Price</option>
+                <option value="model">Model</option>
+                <option value="year">Year</option>
+                <option value="mileage">Mileage</option>
+                </select>
+                <button onclick="filterVehicles()">Filter</button>
+            </div>
+            <div class="listings-section">
+              <h2>Car Listings</h2>
+              {% for listing in for_sell %}
+                  <div class="listing">
+                      <img src="{{ listing.image.url }}" alt="Car Image">
+                      <div class="listing-details">
+                          <p>Make: {{ listing.make }}</p>
+                          <p>Model: {{ listing.model }}</p>
+                          <p>Price: ${{ listing.price }}</p>
+                      </div>
+                  </div>
+              {% empty %}
+                  <p>No car listings available.</p>
+              {% endfor %}
+          </div>
+        </div>
+        <div class="sell_vehicle tab">
+          <h1>You can now sell your or Buy a vehicle of your choice</h1>
+          <div class="post-section">
+              <h2>Post the vehicle on sell</h2>
+              <form method="POST" enctype="multipart/form-data">
+                  <!-- {% csrf_token %} -->
+                  {% csrf_token %}
+                  {{ form}}
+                  
+                  <button type="submit">Post Listing</button>
+              </form>
+
+         
+        </div>
+          <!-- <div class="listings-section">
+              <h2>Car Listings</h2>
+              {% for listing in car_listings %}
+                  <div class="listing">
+                      <img src="{{ listing.image.url }}" alt="Car Image">
+                      <div class="listing-details">
+                          <p>Make: {{ listing.make }}</p>
+                          <p>Model: {{ listing.model }}</p>
+                          <p>Price: ${{ listing.price }}</p>
+                      </div>
+                  </div>
+              {% empty %}
+                  <p>No car listings available.</p>
+              {% endfor %}
+          </div> -->
+
+   
+    </div>
+
+    <style>
+      .sell_vehicle{
+        margin: 20px;
+      }
+      .post-section{
+        margin: 40px;
+      }
+
+    </style>
+
+
+
+
+<script>
+    function switchSection(sectionId) {
+        // Hide all sections
+        var sections = document.getElementsByClassName('tab');
+        
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].classList.remove('active');
+        }
+    
+        // Show the selected section
+        var section = document.getElementsByClassName(sectionId);
+        if (section.length > 0) {
+            section[0].classList.add('active');
+        }
+    }
+</script>
+
+
+</body>
+
+</html>

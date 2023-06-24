@@ -1,6 +1,7 @@
 
 from django.utils import timezone
 from django.db import models
+from django.contrib.auth.models import User
 # from .import models
 
 # Create your models here.
@@ -56,5 +57,17 @@ class Charges(models.Model):
 # class Messages(models.Model):
     
     
-    
-    
+class CarListing(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    make = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='car_images')
+
+    def __str__(self):
+        return f'{self.make} {self.model}'
+
+class CustomUser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    # Other fields and methods of your custom user model

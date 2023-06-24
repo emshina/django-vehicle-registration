@@ -1,0 +1,224 @@
+
+  /*  import google fonts */
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+  *{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body{
+    /* background: #dfe9f5; */
+  }
+  .container{
+    display: flex;
+  }
+  nav{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #1b9b90;
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  .logo{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+  }
+  .profile-pic img{
+    object-fit: cover;
+    object-position: center;
+    display: flex;
+    margin: 10px ;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+  .profile1{
+    display: flex;
+  }
+  .welcome{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+    /* position: relative; */
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    
+    text-transform: uppercase;
+    /* display: table; */
+    /* width: 280px; */
+    padding: 10px;
+  }
+  .welcome .online{
+    margin-left: 10px;
+    color: green;
+  }
+  .logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  a{
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+  }
+  
+  nav .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
+  a:hover{
+    background: #eee;
+  }
+  .logout{
+    position: absolute;
+    bottom: 0;
+  }
+  
+  
+  
+   /* # profile  */
+   
+ .profile{
+    margin: auto;
+    height: 550px;
+    width: 700px;
+    background-color: #1b9b90;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.profile h1{
+    margin: 10px 20px;
+}
+form{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+form label{
+    margin: 10px 0px ;
+    font-size: 18px;
+    letter-spacing: 1px;
+    
+}
+input{
+    margin: 10px 10px;
+    color: rgb(31, 34, 34);
+    font-family: "roboto", sans-serif;
+    width: 80%;
+    font: bold;
+    
+    /* background-color: #1b9b90; */
+
+    height: 40px;
+    border-bottom: 1px solid rgb(10, 129, 26);
+    
+}
+form textarea{
+    font-family: "roboto", sans-serif;
+    background-color: rgb(33, 37, 33, 0.7);
+    height: 100px;
+    padding: 10px;
+    color: azure;
+
+}
+button{
+    background-color: green;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    transition: 2s;
+}
+.pic{
+    border: 0;
+    text-transform: uppercase;
+}
+
+button:hover{
+    background-color: aqua;
+}
+
+
+.sell{
+  margin: 10px;
+
+
+ 
+}
+form .details{
+
+  display: flex;
+  margin: 49px 1px;
+  margin-right: 10px;
+}
+form .details .detail{
+  
+  
+  border-radius: 23px;
+  margin: 10px;
+  padding: 20px;
+  width: 400px;
+}
+form .details .detail input{
+  color: rgb(38, 151, 85);
+  font-family: "roboto", sans-serif;
+  
+}
+
+.tab{
+  display: none;
+}
+
+.tab.active {
+  display: block;
+ 
+}
+
+.Sold-vehicles{
+        
+  margin: 10px;
+}
+
+.Sold-vehicles .search{
+  display: flex;
+  margin-top: 30px;
+
+}
+.Sold-vehicles .search input{
+  width: 300px;
+  color: rgb(32, 37, 37);
+}
+.Sold-vehicles .search button{
+  color: blanchedalmond;
+  font: bold;
+
+
+  margin-left: 20px;
+}
